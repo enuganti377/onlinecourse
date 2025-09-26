@@ -11,12 +11,12 @@ const JWT_SECRET = "karthik";
 app.use(express.json());
 
 app.use(cors({
-  origin: "onlinecourse-zdk9.vercel.app", 
+  origin: "http://localhost:5073", 
   credentials: true
 }));
 
 const corsOptions = {
-  origin: "onlinecourse-zdk9.vercel.app",
+  origin: "http://localhost:5073",
   credentials: true,
   methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
   allowedHeaders: ["Content-Type", "Authorization"]
