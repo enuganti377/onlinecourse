@@ -9,11 +9,11 @@ import Signup from "./assets/Pages/Signup.jsx";
 import Login from "./assets/Pages/Login.jsx";
 import Footer from "./assets/component/Footer.jsx";
 import JavaFullstack from "./assets/Pages/javaFullstack.jsx";
-import Python from "./assets/Pages/python.jsx";
+import Kar from "./assets/Pages/Kar.jsx";
 import AI  from "./assets/Pages/AI.jsx";
 import DEVOPS from "./assets/Pages/DEVOPS.jsx";
 import UI from "./assets/Pages/UI.jsx";
-import MERN  from "./assets/Pages/mern.jsx";
+import MERN  from "./assets/Pages/MERN.jsx";
 
 
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
@@ -32,7 +32,7 @@ export default function App() {
   <Route path="/signup" element={<Signup />} />
   <Route path="/login" element={<Login />} />
   <Route path="/javaFullstack" element={<JavaFullstack />} />
-   <Route path="/python" element={< Python/>} />
+   <Route path="/Kar" element={< Kar/>} />
    <Route path="/AI" element={< AI/>} />
    <Route path="/DEVOPS" element={< DEVOPS/>} />
     <Route path="/UI" element={< UI/>} /> 
