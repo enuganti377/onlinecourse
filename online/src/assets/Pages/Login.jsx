@@ -19,7 +19,7 @@ export default function Login() {
   async function handleSubmit(e) {
   e.preventDefault();
   try {
-    const response = await axios.post("http://localhost:3002/login", formData);
+    const response = await axios.post("https://onlinecourse-efpg.onrender.com/login", formData);
 
     const token = response.data.token;
     if (token) {
