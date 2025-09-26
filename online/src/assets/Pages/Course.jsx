@@ -1,7 +1,47 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 export default function Course() {
+ 
+  const [loading , setLoading] = useState(true);
+
    const navigate = useNavigate() ;
+useEffect(() => {
+  const verifyUser = async () => {
+    try {
+      const token = localStorage.getItem("token");
+
+      if (!token) {
+        navigate("/login");
+        return;
+      }
+
+      await axios.get("http://localhost:3002/course", {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+
+      setLoading(false);
+    } catch (error) {
+      console.error("Not Authorized:", error);
+      navigate("/login");
+    }
+  };
+
+  verifyUser();
+}, [navigate]);
+   
+
+
+    if (loading) {
+  return <h3>Loading...</h3>;
+}
+
+ 
+  
+
+  
   return (
     <div>
      <div>
@@ -25,7 +65,7 @@ export default function Course() {
   
 
 
-  <div style={{height:"400px",width:"430px",borderRadius:"20px", textShadow: "0 2px 6px rgba(0,0,0,0.5)", boxShadow: "0 0 10px rgba(0, 0, 0, 0.2)"}}>
+  <div  onClick={()=> navigate('/Python')} style={{height:"400px",width:"430px",borderRadius:"20px", textShadow: "0 2px 6px rgba(0,0,0,0.5)", boxShadow: "0 0 10px rgba(0, 0, 0, 0.2)"}}>
    <img src='https://tse2.mm.bing.net/th/id/OIP.ZIHkDjUIwSCiEqKjeSi28QHaE8?pid=Api&P=0&h=180' alt='java' style={{height:"250px",width:"400px",borderRadius:"20px",paddingLeft:"15px",paddingTop:"10px"}}/>
   <b> <h3 style={{fontFamily:"arial",paddingLeft:"20px"}}>  Introudaction to python</h3></b>
   <div style={{display:"flex",paddingLeft:"20px"}}>
@@ -36,7 +76,7 @@ export default function Course() {
 
 
 
-  <div style={{height:"400px",width:"430px",borderRadius:"20px", textShadow: "0 2px 6px rgba(0,0,0,0.5)", boxShadow: "0 0 10px rgba(0, 0, 0, 0.2)",marginLeft:"10px"}}>
+  <div   onClick={()=> navigate('/Mern')}style={{height:"400px",width:"430px",borderRadius:"20px", textShadow: "0 2px 6px rgba(0,0,0,0.5)", boxShadow: "0 0 10px rgba(0, 0, 0, 0.2)",marginLeft:"10px"}}>
    <img src='https://wallpapercave.com/wp/wp8725091.jpg' alt='java' style={{height:"250px",width:"400px",borderRadius:"20px",paddingLeft:"15px",paddingTop:"10px"}}/>
   <b> <h3 style={{fontFamily:"arial",paddingLeft:"20px"}}>  The Complate MERN full stack</h3></b>
   <div style={{display:"flex",paddingLeft:"20px"}}>
@@ -48,26 +88,26 @@ export default function Course() {
 
   
 </div>
-<div style={{display:"flex",justifyContent:"center",marginTop:"50px"}}>
+<div onClick={()=> navigate('/DEVOPS')}style={{display:"flex",justifyContent:"center",marginTop:"50px"}}>
   <div style={{height:"400px",width:"430px",borderRadius:"20px", textShadow: "0 2px 6px rgba(0,0,0,0.5)", boxShadow: "0 0 10px rgba(0, 0, 0, 0.2)",marginRight:"10px"}}>
    <img src='https://thumbs.dreamstime.com/z/devops-software-development-concept-devops-software-development-concept-172247523.jpg' alt='java' style={{height:"250px",width:"400px",borderRadius:"20px",paddingLeft:"15px",paddingTop:"10px"}}/>
   <b> <h3 style={{fontFamily:"arial",paddingLeft:"20px"}}>  DEVOPS</h3></b>
   <div style={{display:"flex",paddingLeft:"20px"}}>
-   <img src='https://tse3.mm.bing.net/th?id=OIF.%2bkgf5wK%2b433Eu1jMqdY0XQ&pid=Api&P=0&h=180' alt='sir' style={{borderRadius:"70px",height:"50px",width:"30px"}}/>
+   <img src='https://tse4.mm.bing.net/th/id/OIP.hhiuEV5go8oZ1bK5reCvsQHaE7?pid=Api&P=0&h=180' alt='sir' style={{borderRadius:"70px",height:"50px",width:"30px"}}/>
    <h3 style={{ paddingLeft:"10px"}} >Vikram</h3>
    </div>
   </div>
   
-  <div style={{height:"400px",width:"430px",borderRadius:"20px", textShadow: "0 2px 6px rgba(0,0,0,0.5)", boxShadow: "0 0 10px rgba(0, 0, 0, 0.2)"}}>
+  <div onClick={()=> navigate('/UI')} style={{height:"400px",width:"430px",borderRadius:"20px", textShadow: "0 2px 6px rgba(0,0,0,0.5)", boxShadow: "0 0 10px rgba(0, 0, 0, 0.2)"}}>
    <img src='https://w10.naukri.com/mailers/2021/naukri-learning/oct/27oct/What-is-UI-UX-Design.jpg' alt='java' style={{height:"250px",width:"400px",borderRadius:"20px",paddingLeft:"15px",paddingTop:"10px"}}/>
   <b> <h3 style={{fontFamily:"arial",paddingLeft:"20px"}}> UI & UX Design</h3></b>
   <div style={{display:"flex",paddingLeft:"20px"}}>
-<img src='https://tse2.mm.bing.net/th/id/OIF.NDwQWgLssq84x52Go2IrAg?pid=Api&P=0&h=180' alt='sir' style={{borderRadius:"70px",height:"50px",width:"30px"}}/>
+<img src='https://hily.com/wp-content/uploads/2023/02/image-1-2.png' alt='sir' style={{borderRadius:"70px",height:"50px",width:"30px"}}/>
 <h3 style={{ paddingLeft:"10px"}} >Arush</h3>
 </div>
   </div>
 
-  <div style={{height:"400px",width:"430px",borderRadius:"20px", textShadow: "0 2px 6px rgba(0,0,0,0.5)", boxShadow: "0 0 10px rgba(0, 0, 0, 0.2)",marginLeft:"10px"}}>
+  <div onClick={()=> navigate('/AI')} style={{height:"400px",width:"430px",borderRadius:"20px", textShadow: "0 2px 6px rgba(0,0,0,0.5)", boxShadow: "0 0 10px rgba(0, 0, 0, 0.2)",marginLeft:"10px"}}>
    <img src='https://erode-sengunthar.ac.in/wp-content/uploads/2024/02/aiml-image-1.png' alt='java' style={{height:"250px",width:"400px",borderRadius:"20px",paddingLeft:"15px",paddingTop:"10px"}}/>
   <b> <h3 style={{fontFamily:"arial",paddingLeft:"20px"}}>AI & ML</h3></b>
   <div style={{display:"flex",paddingLeft:"20px"}}>

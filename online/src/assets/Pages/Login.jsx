@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
+
 
 export default function Login() {
   const [formData, setFormData] = useState({
@@ -15,22 +17,24 @@ export default function Login() {
   }
 
   async function handleSubmit(e) {
-    e.preventDefault(); 
-    try{
-      const response = await axios.post("http://localhost:4000/login",formData)
-      const token = response.data.token;
-      localStorage.setItem("authToken", token);
-      console.log("Login successful. Token stored.");
-     navigate("/home");
+  e.preventDefault();
+  try {
+    const response = await axios.post("http://localhost:3002/login", formData);
 
-    
+    const token = response.data.token;
+    if (token) {
+      localStorage.setItem("token", token);
+      console.log("Login successful. Token stored.");
+      navigate("/Course"); 
+    } else {
+      alert(response.data.message || "Login failed");
     }
-   catch (error) {
-  console.error("Login failed:", error.response?.data || error.message);
+  } catch (error) {
+    console.error("Login failed:", error.response?.data || error.message);
+    alert(error.response?.data?.message || "Login failed");
+  }
 }
 
-
-  }
   return (
     <div
       style={{
@@ -103,7 +107,14 @@ export default function Login() {
         >
           Login
         </button>
+        <p>
+        Don’t have an account?{""}
+        <br></br>
+        <Link to="/signup">Sign up here</Link>
+      </p>
+       
       </form>
+      
     </div>
   );
 }

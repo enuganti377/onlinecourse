@@ -1,5 +1,5 @@
 import React from "react";
-
+import { useNavigate } from "react-router-dom";
 const statsData = [
   { icon: "🌐", value: "3+", label: "Years of Language Education Experience" },
   { icon: "💻", value: "99+", label: "Innovative Foreign Online Courses" },
@@ -8,6 +8,7 @@ const statsData = [
 ];
 
 export default function About() {
+  const navigate = useNavigate();
   return (
     <div>
       {/* Hero Section */}
@@ -72,7 +73,7 @@ export default function About() {
               fontWeight: 700,
               cursor: "pointer",
             }}
-            onClick={() => alert("CTA clicked")}
+            onClick={() => navigate("/course")}
           >
             Explore Courses
           </button>

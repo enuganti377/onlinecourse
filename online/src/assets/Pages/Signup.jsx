@@ -18,13 +18,14 @@ export default function Signup() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    try {
-      const response = await axios.post("http://localhost:4000/signup", formData);
+    
+      const response = await axios.post("http://localhost:3002/signup", formData,
+        {withCredentials: true}
+       
+      );
       console.log("Signup successful:", response.data);
       navigate("/login"); 
-    } catch (error) {
-      console.error("Signup failed:", error.response?.data || error.message);
-    }
+    
   };
 
   return (
@@ -108,6 +109,7 @@ export default function Signup() {
             borderRadius: "10px",
             height: "40px",
             width: "90px"
+             
           }}
         >
           Sign Up
