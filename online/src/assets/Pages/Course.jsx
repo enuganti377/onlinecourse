@@ -16,7 +16,7 @@ useEffect(() => {
         return;
       }
 
-      await axios.get("http://localhost:3002/course", {
+      await axios.get("https://onlinecourse-efpg.onrender.com/course", {
         headers: {
           Authorization: `Bearer ${token}`,
         },
